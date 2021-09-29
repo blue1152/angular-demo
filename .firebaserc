@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-demo-a5976": {
+      "hosting": {
+        "angular-tour-of-heroes": [
+          "angular-demo-a5976"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-demo-a5976"
+  }
+}

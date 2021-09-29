@@ -1,0 +1,11 @@
+<div class="shopping-cart">
+  <h3>My shopping bag</h3>
+  <div class="cart-table" *ngIf="data">
+    <div class="cart-list" *ngFor="let item of items">
+      <div class="item-id">id: {{item.id}}</div>
+      <div class="item-count">count: {{item.count}}</div>
+      <div class="item-price">price: {{item.price}}</div>
+    </div>
+    <button class="purchase" (click)="toPurchase()">Confirm and Pay</button>
+  </div>
+</div>

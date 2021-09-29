@@ -1,0 +1,20 @@
+button {
+  all: unset;
+  margin-top: 20px;
+  background-color: rgb(247, 19, 19);
+  color: #fff;
+  font-weight: bold;
+  padding: .5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgba(247, 19, 19, 0.7);
+}
+.cart-list {
+  display: flex;
+  .item-id, .item-count, .item-price {
+    margin-right: .5rem;
+  }
+}

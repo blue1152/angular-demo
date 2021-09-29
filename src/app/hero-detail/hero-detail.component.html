@@ -1,0 +1,18 @@
+<div *ngIf="hero">
+
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+    <button (click)="save()">save</button>
+  </div>
+  <div class="shoppping-item">
+    <label for="hero-count">count: </label>
+    <input type="text" id="hero-count" [(ngModel)]="count" placeholder="count">
+    <button (click)="addBag()">add to bag</button>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <shopping-cart [items]="wishList"></shopping-cart>
+
+</div>
