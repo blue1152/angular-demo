@@ -62,13 +62,20 @@ export class AppModule {
   constructor(@Inject(EnvironmentToken) private env: any) {
     gtag('config', this.env.GOOGLE.GA_TRACKING_ID, {
       'cookie_domain': 'none',
-      'user_id': 'USER_ID',
+      'cookie_update': false,
+      'cookie_expires': 28 * 24 * 60 * 60,  // 28 days, in seconds
+      'user_id': this.GetUserId(),
       'debug_mode':true,
     });
     gtag('config', this.env.GOOGLE.GA_TRACKING_ID_OLD, {
       'cookie_domain': 'none',
-      'user_id': 'USER_ID',
+      'cookie_update': false,
+      'cookie_expires': 28 * 24 * 60 * 60,  // 28 days, in seconds
+      'user_id': this.GetUserId(),
       'debug_mode':true,
     });
+  }
+  GetUserId() {
+    return Math.floor(Math.random() * 10000000)
   }
 }
