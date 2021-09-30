@@ -21,8 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // nebular themes
-import { NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbInputModule } from '@nebular/theme';
-//import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbInputModule} from '@nebular/theme';
 // environment
 export const EnvironmentToken = new InjectionToken('ENVIRONMENT');
 declare let gtag: Function;
