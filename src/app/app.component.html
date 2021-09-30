@@ -1,23 +1,15 @@
 <nb-layout>
 
-  <nb-layout-header fixed>
-  <!-- Insert header here -->
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/heroes">Heroes</a>
+  <nb-layout-header>
+    <a routerLink="/dashboard"><button nbButton status="info">Dashboard</button></a>
+    <a routerLink="/heroes"><button nbButton status="info">Heroes</button></a>
   </nb-layout-header>
 
   <nb-layout-column>
-    <h1>{{title}}</h1>
-    <!-- <app-heroes></app-heroes> -->
-    <!-- <ul>
-      <li class="text" *ngFor="let item of items | async">
-        {{item.name}}
-      </li>
-    </ul> -->
     <router-outlet></router-outlet>
   </nb-layout-column>
 
-  <nb-layout-footer fixed>
+  <nb-layout-footer>
   <!-- Insert footer here -->
   <app-messages></app-messages>
   </nb-layout-footer>

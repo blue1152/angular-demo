@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MessageService } from '../message.service';
 
 declare let gtag: Function;
 
@@ -14,7 +15,9 @@ export class ShoppingCartComponent implements OnInit {
 
   @Input() items: any[] = [];
 
-  constructor() {}
+  constructor(
+    private messageService: MessageService,
+  ) {}
 
   ngOnInit(): void {
   }
@@ -32,9 +35,13 @@ export class ShoppingCartComponent implements OnInit {
           }
         ]
       });
+      this.log(`confirm to buy ${item.title}`)
     })
 
-    alert('confirm to buy!')
+  }
+
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
   }
 
 }

@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
 import { Title } from '@angular/platform-browser';
+import { MessageService } from '../message.service';
 
 declare let gtag: Function;
 
@@ -25,6 +26,7 @@ export class HeroDetailComponent implements OnInit {
     private heroService: HeroService,
     private location: Location,
     private titleService: Title,
+    private messageService: MessageService,
   ) {}
 
   ngOnInit() {
@@ -93,7 +95,7 @@ export class HeroDetailComponent implements OnInit {
 
   addBag(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const totalPrice = 7.77 * this.count
+    const totalPrice = Math.round(7.77 * this.count * 100)/100
     const items = {
       id: id,
       count: this.count,
@@ -112,7 +114,11 @@ export class HeroDetailComponent implements OnInit {
         }
       ]
     });
-    alert(`add ${this.count} to cart complete!`)
+    this.log(`add ${this.count} to cart complete!`)
+  }
+
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
   }
 
 }

@@ -1,20 +1,26 @@
 <h2>My Heroes</h2>
 
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button class="delete" title="delete hero"
-  (click)="delete(hero)">x</button>
-  </li>
-</ul>
-<div>
+<div class="card-container">
+    <nb-card status="success" *ngFor="let hero of heroes">
+      <nb-card-header>
+        <span class="badge">{{hero.id}}</span>
+        <span class="name">{{hero.name}}</span>
+      </nb-card-header>
+        <nb-card-body>
+        A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
+        </nb-card-body>
+      <nb-card-footer>
+        <a routerLink="/detail/{{hero.id}}"><button nbButton status="success">detail</button></a>
+        <button nbButton status="danger" title="delete hero"
+        (click)="delete(hero)">delete</button></nb-card-footer>
+    </nb-card>
+</div>
+<div class="add-hero-container">
   <label for="new-hero">Hero name: </label>
-  <input id="new-hero" #heroName />
+  <input nbInput status="primary" id="new-hero" #heroName />
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+  <button nbButton status="primary" (click)="add(heroName.value); heroName.value=''">
     Add hero
   </button>
 </div>

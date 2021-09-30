@@ -4,7 +4,8 @@ import { Observable, of } from 'rxjs'; // Observable imports
 import { catchError, map, tap } from 'rxjs/operators'; // 對obersavable的錯誤處理
 import { MessageService } from './message.service';
 import { Hero } from './hero';
-//import { HEROES } from './mock-heroes';
+
+declare let gtag: Function;
 
 @Injectable({
   providedIn: 'root'
@@ -23,14 +24,9 @@ export class HeroService {
     private messageService: MessageService,
   ) { }
 
-  // 利用RxJS模組, 將資料改成Observable
   getHeroes(): Observable<Hero[]> {
-    // const heroes = of(HEROES)
-    // this.messageService.add('HeroService: fetched heroes');
-    // return heroes
     return this.http.get<Hero[]>(this.heroesUrl)
     .pipe(
-      tap(_ => this.log('fetched heroes')),
       catchError(this.handleError<Hero[]>('getHeroes', []))
     );
   }
@@ -48,7 +44,6 @@ export class HeroService {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url)
     .pipe(
-      tap(() => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
   }
@@ -97,7 +92,10 @@ export class HeroService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      gtag('event', 'exception', {
+        'description': `${operation} failed: ${error.message}`,
+        'fatal': true
+      });
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

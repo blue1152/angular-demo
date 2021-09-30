@@ -6,7 +6,6 @@ declare let gtag: Function;
 @Injectable()
 export class ErrorsHandler implements ErrorHandler {
   handleError(error: Error | HttpErrorResponse) {
-    const testCode = true
     if (!navigator.onLine) {
       console.error("Browser Offline!");
     } else {
@@ -22,12 +21,6 @@ export class ErrorsHandler implements ErrorHandler {
         console.error("Client Error!");
       }
       console.error(error);
-    }
-    // if(!navigator.cookieEnabled) {
-    //   console.error("cookie unabled");
-    // }
-    if (testCode) {
-      console.error("test code!");
     }
     gtag('event', 'exception', {
       'description': error,

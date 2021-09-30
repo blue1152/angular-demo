@@ -20,8 +20,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
+// nebular themes
+import { NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbInputModule } from '@nebular/theme';
+//import { NbEvaIconsModule } from '@nebular/eva-icons';
 // environment
 export const EnvironmentToken = new InjectionToken('ENVIRONMENT');
 declare let gtag: Function;
@@ -50,7 +51,9 @@ declare let gtag: Function;
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
-    NbEvaIconsModule,
+    NbCardModule,
+    NbButtonModule,
+    NbInputModule,
   ],
   providers: [
     { provide: EnvironmentToken, useValue: environment },
@@ -63,14 +66,12 @@ export class AppModule {
     gtag('config', this.env.GOOGLE.GA_TRACKING_ID, {
       'cookie_domain': 'none',
       'cookie_update': false,
-      'cookie_expires': 28 * 24 * 60 * 60,  // 28 days, in seconds
       'user_id': this.GetUserId(),
       'debug_mode':true,
     });
     gtag('config', this.env.GOOGLE.GA_TRACKING_ID_OLD, {
       'cookie_domain': 'none',
       'cookie_update': false,
-      'cookie_expires': 28 * 24 * 60 * 60,  // 28 days, in seconds
       'user_id': this.GetUserId(),
       'debug_mode':true,
     });
