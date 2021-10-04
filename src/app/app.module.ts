@@ -65,13 +65,13 @@ export class AppModule {
     gtag('config', this.env.GOOGLE.GA_TRACKING_ID, {
       'cookie_domain': 'none',
       'cookie_update': false,
-      'user_id': this.GetUserId(),
+      // 'user_id': this.GetUserId(),
       'debug_mode':true,
     });
     gtag('config', this.env.GOOGLE.GA_TRACKING_ID_OLD, {
       'cookie_domain': 'none',
       'cookie_update': false,
-      'user_id': this.GetUserId(),
+      // 'user_id': this.GetUserId(),
       'debug_mode':true,
     });
   }
