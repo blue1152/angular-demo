@@ -3,6 +3,7 @@ import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { Title } from '@angular/platform-browser';
 
+declare let gtag: Function;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,11 +21,19 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle(this.title);
+    this.setUserProperties();
     this.getHeroes();
   }
 
   getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+  }
+
+  setUserProperties(): void {
+    gtag('set', 'user_properties', {
+      'favorite_color': 'blue',
+      'favorite_car': 'benz',
+    });
   }
 }
