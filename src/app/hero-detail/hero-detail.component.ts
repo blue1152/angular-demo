@@ -14,7 +14,7 @@ declare let gtag: Function;
   styleUrls: ['./hero-detail.component.scss']
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero?: Hero; // 定義來自父元素的規格 & 接收父元件資料
+  @Input() hero?: Hero;
 
   title = 'Tour of Heroes detail';
   count: number = 0;
@@ -39,14 +39,7 @@ export class HeroDetailComponent implements OnInit {
     //     'fatal': false
     //   });
     // }
-    // try {
-    //   this.timer(1000);
-    // } catch(err) {
-    //   gtag('event', 'exception', {
-    //     'description': err,
-    //     'fatal': false
-    //   });
-    // }
+
   }
 
   private gaEvent(title: string):void {
@@ -69,8 +62,6 @@ export class HeroDetailComponent implements OnInit {
     }
   }
 
-  // route.snapshot 是一個路由資訊的靜態快照，抓取自元件剛剛建立完畢之後。
-  // paramMap 是一個從 URL 中提取的路由引數值的字典。 "id" 對應的值就是要獲取的英雄的 id。
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.titleService.setTitle(`${this.title} - ${id}`);
@@ -78,10 +69,19 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(hero => this.hero = hero);
     this.newTitle = `${this.title} - ${id}`
     this.gaEvent(this.newTitle);
+    // test error message
+    if (id === 13) {
+      try {
+        this.timer(1000);
+      } catch(err) {
+        gtag('event', 'exception', {
+          'description': err,
+          'fatal': false
+        });
+      }
+    }
   }
 
-  // 返回上一頁
-  // The location is an Angular service for interacting with the browser.
   goBack(): void {
     this.location.back();
   }

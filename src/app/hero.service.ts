@@ -17,8 +17,6 @@ export class HeroService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  // service-in-service 例子:
-  // 把服務(MessageService)注入服務(HeroService), 再一起被注入到 HeroesComponent
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
@@ -31,14 +29,6 @@ export class HeroService {
     );
   }
 
-  // getHero(id: number): Observable<Hero> {
-  //   // 當編譯器無法自動追蹤出變數已經不可能為 null 或 undefined 值時，
-  //   // 可以在該變數識別字後加上驚嘆號, 告訴編譯器該值已不可能為空值。
-  //   // 這是一個 "assertion(斷言)"，和 as 是一樣的意思。
-  //   const hero = HEROES.find(h => h.id === id)!;
-  //   this.messageService.add(`HeroService: fetched hero id=${id}`);
-  //   return of(hero);
-  // }
   /** GET hero by id. Will 404 if id not found */
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;

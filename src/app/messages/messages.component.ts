@@ -8,7 +8,6 @@ import { MessageService } from '../message.service';
 })
 export class MessagesComponent implements OnInit {
 
-  // 會在外部的html檔中直接使用 (Angular 只會繫結到元件的公共屬性)
   constructor(
     public messageService: MessageService // 必須是public
   ) { }
