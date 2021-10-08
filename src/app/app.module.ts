@@ -20,6 +20,12 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+// auth
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { AuthDashboardComponent } from './auth/dashboard/dashboard.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 // nebular themes
 import { NbThemeModule, NbLayoutModule, NbCardModule, NbButtonModule, NbInputModule} from '@nebular/theme';
 // environment
@@ -33,7 +39,13 @@ declare let gtag: Function;
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    // auth
+    SignInComponent,
+    SignUpComponent,
+    AuthDashboardComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +56,8 @@ declare let gtag: Function;
       InMemoryDataService, { dataEncapsulation: false }
     ),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     BrowserAnimationsModule,
     // NB theme relating
     NbThemeModule.forRoot({ name: 'default' }),
