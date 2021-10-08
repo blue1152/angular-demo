@@ -44,10 +44,6 @@ export class AppComponent implements OnInit {
       .subscribe(
         (x: any) => {
           gtag('event', 'page_view', { 'page_path': x.url });
-          // gtag('event', 'myCustomEvent', {
-          //   "TheEventAction": "myEventAction1",
-          //   "TheEventLabel" : "myEventLabel1"
-          // });
         }
       );
   }

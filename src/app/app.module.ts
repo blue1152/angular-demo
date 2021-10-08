@@ -2,6 +2,8 @@ import { Inject, InjectionToken, NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from './../environments/environment';
 // 使用http模組來串接web api, 一定要在BrowserModule之後載入
 import { HttpClientModule } from '@angular/common/http';
